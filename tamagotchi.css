@@ -5,7 +5,7 @@ body {
 .hover:hover {
   cursor: pointer;
   transform: scale(1.15);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
 }
 .none {
   display: none;
@@ -43,16 +43,6 @@ h1 {
 .nightscreen {
   background-color: midnightblue;
 }
-.egg {
-  margin: auto;
-  width: 50%;
-  height: 50px;
-  width: 50px;
-  animation-duration: 2s;
-  animation-name: bounce;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
 #foodicon {
   height: 50px;
   width: 40px;
@@ -64,6 +54,31 @@ h1 {
 #resticon {
   height: 50px;
   width: 40px;
+}
+/* #starttext {
+  padding: 2px;
+  font-family: 'Press Start 2P', cursive;
+} */
+#deathtext {
+  padding: 2px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', cursive;
+}
+.egg {
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  width: 50px;
+  animation-duration: 2s;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.deathicon {
+  margin: auto;
+  width: 50%;
+  width: 60px;
+  height: 60px;
 }
 .creature {
   margin: auto;

@@ -22,7 +22,7 @@
 
       <div id="topscreen-start">
         <div class="screensides">
-          <p>Name your TAMAGOTCHI</p>
+          <p id="starttext">Name your TAMAGOTCHI</p>
         </div>
       </div>
 
@@ -44,14 +44,14 @@
       </div>
 
       <img src="egg.jpg" class="egg">
-      <!-- <div id="tamagotchi-gameplay" class ="none"> -->
-        <img src="tamagotchi.jpg" class="creature none">
-      <!-- </div> -->
+      <img src="tamagotchi.jpg" class="creature none">
+      <p id="deathtext" class="none"></p>
+      <img src="death.jpg" class="deathicon none">
 
       <div id="bottomscreen-start">
         <div class="screensides">
           <input type="text" id="name" name="name" required minlength="1" maxlength="8" size="10">
-          <button class="submitname" type="submit" onclick="hatchTamagotchi(value)">Submit</button>
+          <button class="submitname hover" type="submit" onclick="hatchTamagotchi(value)">Submit</button>
         </div>
       </div>
       <div id="bottomscreen-gameplay" class="none">
