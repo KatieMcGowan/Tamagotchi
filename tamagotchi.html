@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAMAGOTCHI</title>
+  <script src="jquery-3.6.0.js" defer></script>
+  <script src="tamagotchi.js" defer></script>
+  <link href="tamagotchi.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="console">
+    <h1>TAMAGOTCHI</h1>
+    <div id="screen">
+
+      <div id="topscreen-start">
+        <div class="screensides">
+          <p>Name your TAMAGOTCHI</p>
+        </div>
+      </div>
+
+      <div id="topscreen-gameplay" class="none">
+        <div class="screensides none">
+          <div id="namesquare" class="icons">
+            <p id="playername">Dummy Name</p>
+          </div>
+          <div id="actionsquare" class="icons"></div>
+          <div id="agesquare" class="icons">
+            <p>Age:</p>
+            <p id="age">0</p>
+          </div>
+        </div>
+      </div>
+
+      <img src="egg.jpg" class="egg">
+      <!-- <div id="tamagotchi-gameplay" class ="none"> -->
+        <img src="tamagotchi.jpg" class="creature none">
+      <!-- </div> -->
+
+      <div id="bottomscreen-start">
+        <div class="screensides">
+          <input type="text" id="name" name="name" required minlength="1" maxlength="8" size="10">
+
+<!-- Example from Pokemon Card game
+  <input type="number" name="quantity" id="quantity" min="1" max="3">
+    <span id="validity"></span>
+    <button id='playhand' onclick="round(document.getElementById('quantity').value)">Submit</button> -->
+
+          <button class="submitname" type="submit" onclick="hatchTamagotchi(value)">Submit</button>
+        </div>
+      </div>
+      <div id="bottomscreen-gameplay" class="none">
+        <div class="screensides">
+          <div id="playmeter" class="icons">
+            <p>Boredom:</p>
+            <p id="boredom">0</p>  
+          </div>
+          <div id="foodmeter" class="icons">
+            <p>Hunger:</p>
+            <p id="hunger">0</p>
+          </div>
+          <div id="restmeter" class="icons">
+            <p>Sleepiness:</p>
+            <p id="sleepiness">0</p>
+          </div>
+        </div>  
+      </div>
+    </div>    
+    <div id="buttoncontainer">
+      <div id="playcontainer">
+        <button id="play" class="hover"></button>
+        <p class="buttontext">PLAY</p>
+      </div>
+      <div id="feedcontainer">
+        <button id="feed" class="hover"></button>
+        <p class="buttontext">FEED</p>
+      </div>
+      <div id="restcontainer">
+        <button id="rest" class="hover"></button>
+        <p class="buttontext">REST</p>
+      </div> 
+    </div>  
+  </div>
+</body>
+</html>

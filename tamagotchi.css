@@ -1,0 +1,141 @@
+body {
+  font-family: 'Covered By Your Grace', cursive;
+  background-color: mediumslateblue;
+}
+.hover:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.none {
+  display: none;
+}
+#console {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: radial-gradient(circle at center, rgb(230, 124, 236), rgb(0, 255, 255), rgb(29, 78, 255) 100%);
+  width: 540px;
+  height: 600px;
+  border-style: solid;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border-color: rgb(10, 155, 255);
+}
+h1 {
+  font-size: 40px;
+  color: rgb(9, 27, 27);
+  text-shadow: -1px -1px 0px rgb(17, 113, 108, 0.73), -1px -1px 0px rgba(31, 197, 200, 0.8);
+}
+#screen {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 300px;
+  background-color: white;
+  border: 2mm ridge rgba(8, 119, 123, 0.559);
+  border-radius: 10%;
+  padding: 15px;
+}
+.egg {
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  width: 50px;
+}
+.creature {
+  margin: auto;
+  width: 50%;
+  height: 65px;
+  width: 65px;
+}
+.screensides {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#topscreen-start {
+  font-family: 'Press Start 2P', cursive;
+}
+#bottomscreen-start {
+  font-family: 'Press Start 2P', cursive;
+}
+#name {
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+}
+.submitname {
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+  background-color: white;
+}
+.icons {
+  font-size: 5.5px;
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-style: solid;
+  border-radius: 20%;
+  height: 50px;
+  width: 60px;
+}
+p {
+  text-align: center;
+}
+.buttontext {
+  text-shadow: -1px -1px 0px rgb(17, 113, 108, 0.73), -1px -1px 0px rgba(31, 197, 200, 0.8);
+}
+#buttoncontainer {
+  height: 150px;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+#playcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#play {
+  background-color: magenta;
+  height: 50px;
+  width: 50px;
+  border: 4mm ridge magenta;
+  border-radius: 50px;
+  transition: 0.2s ease-in-out;
+}
+#feedcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-end;
+}
+#feed {
+  background-color: rgb(51, 213, 78);
+  height: 50px;
+  width: 50px;
+  border: 4mm ridge rgb(51, 213, 78);
+  border-radius: 50px;
+  transition: 0.2s ease-in-out;
+}
+#restcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#rest {
+  background-color: rgb(68, 0, 255);
+  height: 50px;
+  width: 50px;
+  border: 4mm ridge rgb(68, 0, 255);
+  border-radius: 50px;
+  transition: 0.2s ease-in-out;
+}
