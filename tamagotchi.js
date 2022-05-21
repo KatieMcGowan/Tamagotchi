@@ -67,10 +67,18 @@ $("#play").on("click", function () {
   if (boredomMeter >= 3) {
     boredomMeter = boredomMeter - 3; 
     $('#boredom').html(boredomMeter);
-    //add timer of 1 second
     $("#playicon").removeClass("none");
+    let counter = setInterval(function() {
+      if ($("#playicon").className !== "none") {
+        clearInterval(counter);
+        $("#playicon").addClass("none");
+      }
+    },1500);
   } else return;
 })
+
+//Consider if I click two buttons simultaneously, what happens to icons?
+
 
 $("#feed").on("click", function () {
   if (hungerMeter >= 2){
