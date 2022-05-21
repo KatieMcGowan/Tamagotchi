@@ -51,16 +51,20 @@ const startSleepinessTimer = () => {
 $(".submitname").on("click", function(){
   let tamagotchiName = $("#name").val()
   hatchTamagotchi(tamagotchiName);
-    $("#topscreen-start").addClass("none")
-    $("#topscreen-gameplay").removeClass("none");
-    $(".egg").addClass("none");
-    $(".creature").removeClass("none");
-    $("#bottomscreen-start").addClass("none");
-    $("#bottomscreen-gameplay").removeClass("none")
-    $("#playername").html(tamagotchiName);
-   startBoredomTimer(); 
-   startHungerTimer();
-   startSleepinessTimer();
+  $("#topscreen-start").addClass("none")
+  $("#topscreen-gameplay").removeClass("none");
+  $(".egg").addClass("none");
+  $(".creature").removeClass("none");
+  $("#bottomscreen-start").addClass("none");
+  $("#bottomscreen-gameplay").removeClass("none")
+  $("#playername").html(tamagotchiName);
+  startBoredomTimer(); 
+  startHungerTimer();
+  startSleepinessTimer();
+  setInterval(function() {
+    tamagotchi.age++;
+    $("#age").html(tamagotchi.age);
+    },10000);
 });
 
 $("#play").on("click", function () {
@@ -96,10 +100,10 @@ $("#feed").on("click", function () {
 $("#rest").on("click", function () {
   if (sleepinessMeter >= 4) {
     sleepinessMeter = sleepinessMeter - 4; 
-    $('#sleepiness').html(sleepinessMeter);
+    $("#sleepiness").html(sleepinessMeter);
     $("#resticon").removeClass("none");
     // //Doesn't work
-    // $("#screen").addClass(".nightscreen");
+    $("#screen").addClass("nightscreen");
     let counter = setInterval(function() {
       if ($("#resticon").className !== "none") {
         clearInterval(counter);
