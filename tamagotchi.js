@@ -79,13 +79,17 @@ $("#play").on("click", function () {
 
 //Consider if I click two buttons simultaneously, what happens to icons?
 
-
 $("#feed").on("click", function () {
   if (hungerMeter >= 2){
     hungerMeter = hungerMeter - 2; 
     $('#hunger').html(hungerMeter);
-    //add timer of 1 second
     $("#foodicon").removeClass("none");
+    let counter = setInterval(function() {
+      if ($("#foodicon").className !== "none") {
+        clearInterval(counter);
+        $("#foodicon").addClass("none");
+      }
+    },1500);
   } else return;
 })
 
@@ -93,9 +97,14 @@ $("#rest").on("click", function () {
   if (sleepinessMeter >= 4) {
     sleepinessMeter = sleepinessMeter - 4; 
     $('#sleepiness').html(sleepinessMeter);
-    //Doesn't work
-    $("#screen").addClass(".nightscreen");
-    //add timer of 1 second
     $("#resticon").removeClass("none");
+    // //Doesn't work
+    // $("#screen").addClass(".nightscreen");
+    let counter = setInterval(function() {
+      if ($("#resticon").className !== "none") {
+        clearInterval(counter);
+        $("#resticon").addClass("none");
+      }
+    },1500);
   } else return;  
 })
