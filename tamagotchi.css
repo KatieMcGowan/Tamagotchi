@@ -55,14 +55,9 @@ h1 {
   height: 50px;
   width: 40px;
 }
-/* #starttext {
-  padding: 2px;
-  font-family: 'Press Start 2P', cursive;
-} */
 #deathtext {
-  padding: 2px;
-  font-size: 12px;
   font-family: 'Press Start 2P', cursive;
+  padding: 0px 0px 4px 0px;
 }
 .egg {
   margin: auto;
@@ -74,19 +69,22 @@ h1 {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+.creature {
+  margin: auto;
+  height: 65px;
+  width: 65px;
+  animation-duration: 2s;
+  animation-name: slide;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 .deathicon {
   margin: auto;
   width: 50%;
   width: 60px;
   height: 60px;
-}
-.creature {
-  margin: auto;
-  width: 50%;
-  height: 65px;
-  width: 65px;
   animation-duration: 2s;
-  animation-name: slide;
+  animation-name: fade;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
@@ -108,6 +106,13 @@ h1 {
     margin-right: 65%;
   }
 }
+@keyframes fade {
+  0%   {opacity:1}
+  25%  {opacity: 0.5}
+  50%  {opacity:0}
+  75%  {opacity: 0.5}
+  100% {opacity:1}
+}
 .screensides {
   display: flex;
   flex-direction: row;
@@ -116,6 +121,9 @@ h1 {
 #topscreen-start {
   font-family: 'Press Start 2P', cursive;
 }
+#starttext {
+  padding: 0px 0px 4px 0px;
+} 
 #bottomscreen-start {
   font-family: 'Press Start 2P', cursive;
 }

@@ -29,7 +29,7 @@ const startBoredomTimer = () => {
       $("#deathtext").removeClass("none");
       $(".deathicon").removeClass("none");
     }
-  },1000)
+  },1500)
 }
 
 const startHungerTimer = () => {
@@ -65,25 +65,6 @@ const startSleepinessTimer = () => {
     }
   },3000)
 }
-
-// const deathState = () => {
-//   if (boredomMeter >= 10) {
-//     $(".creature").addClass("none");
-//     $("#deathtext").removeClass("none");
-//     $("#deathtext").html = tamagotchi.name + ", age: " + tamagotchi.age + ", has died from boredom."
-//     $(".deathicon").removeClass("none");
-//   }
-//   else if (hungerMeter >= 10) {
-//     $(".creature").addClass("none");
-//     $("#deathtext").removeClass("none");
-//     $("#deathtext").html = tamagotchi.name + ", age: " + tamagotchi.age + ", has died from hunger."
-//     $(".deathicon").removeClass("none");
-//   } else if (sleepinessMeter >= 0) {
-//     $(".creature").addClass("none");
-//     $("#deathtext").removeClass("none");
-//     $("#deathtext").html = tamagotchi.name + ", age: " + tamagotchi.age + ", has died from sleepiness."
-//     $(".deathicon").removeClass("none");
-// }
 
 $(".submitname").on("click", function(){
   let tamagotchiName = $("#name").val()
@@ -140,12 +121,12 @@ $("#rest").on("click", function () {
     $("#sleepiness").html(sleepinessMeter);
     $("#resticon").removeClass("none");
     // //Doesn't work
-    $("#screen").addClass("nightscreen");
+    // $("#screen").addClass("nightscreen");
     let counter = setInterval(function() {
       if ($("#resticon").className !== "none") {
         clearInterval(counter);
         $("#resticon").addClass("none");
-        $("#screen").removeClass("nightscreen");
+        $("#screen").addClass("nightscreen");
       }
     },1500);
   } else return;  
