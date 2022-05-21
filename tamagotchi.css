@@ -40,17 +40,46 @@ h1 {
   border-radius: 10%;
   padding: 15px;
 }
+.nightscreen {
+  background-color: midnightblue;
+}
 .egg {
   margin: auto;
   width: 50%;
   height: 50px;
   width: 50px;
+  animation-duration: 2s;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 .creature {
   margin: auto;
   width: 50%;
   height: 65px;
   width: 65px;
+  animation-duration: 2s;
+  animation-name: slide;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes bounce {
+  from {
+    margin-top: 10%;
+    height: 70px;
+  }
+  to {
+    margin-bottom: 10%;
+    width: 70px;
+  }
+}
+@keyframes slide {
+  from {
+    margin-left: 65%;
+  }
+  to {
+    margin-right: 65%;
+  }
 }
 .screensides {
   display: flex;
@@ -66,11 +95,13 @@ h1 {
 #name {
   font-size: 10px;
   font-family: 'Press Start 2P', cursive;
+  padding: 2px;
 }
 .submitname {
   font-size: 10px;
   font-family: 'Press Start 2P', cursive;
   background-color: white;
+  padding: 2px;
 }
 .icons {
   font-size: 5.5px;
