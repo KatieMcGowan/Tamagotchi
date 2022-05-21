@@ -63,25 +63,12 @@ $(".submitname").on("click", function(){
    startSleepinessTimer();
 });
 
-
-// function startTimer() {
-//   let counter = setInterval(function(){
-//     timer--;
-//     if (timer <= 0) {
-//       clearInterval(counter);
-//       scoreBoard.text(`Game over. Your score is ${score}`);
-//       return;
-//     }
-//     renderStats();
-//   }, 1000);
-// }
-
-
-
 $("#play").on("click", function () {
   if (boredomMeter >= 3) {
     boredomMeter = boredomMeter - 3; 
     $('#boredom').html(boredomMeter);
+    //add timer of 1 second
+    $("#playicon").removeClass("none");
   } else return;
 })
 
@@ -89,6 +76,8 @@ $("#feed").on("click", function () {
   if (hungerMeter >= 2){
     hungerMeter = hungerMeter - 2; 
     $('#hunger').html(hungerMeter);
+    //add timer of 1 second
+    $("#foodicon").removeClass("none");
   } else return;
 })
 
@@ -96,6 +85,9 @@ $("#rest").on("click", function () {
   if (sleepinessMeter >= 4) {
     sleepinessMeter = sleepinessMeter - 4; 
     $('#sleepiness').html(sleepinessMeter);
+    //Doesn't work
     $("#screen").addClass(".nightscreen");
+    //add timer of 1 second
+    $("#resticon").removeClass("none");
   } else return;  
 })

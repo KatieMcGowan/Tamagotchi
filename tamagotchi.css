@@ -53,6 +53,18 @@ h1 {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+#foodicon {
+  height: 50px;
+  width: 40px;
+}
+#playicon {
+  height: 40px;
+  width: 50px;
+}
+#resticon {
+  height: 50px;
+  width: 40px;
+}
 .creature {
   margin: auto;
   width: 50%;
