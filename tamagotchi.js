@@ -81,6 +81,7 @@ const startSleepinessTimer = () => {
   },3000)
 }
 
+//Submit Button
 $(".submitname").on("click", function(){
   let tamagotchiName = $("#name").val()
   hatchTamagotchi(tamagotchiName);
@@ -89,7 +90,7 @@ $(".submitname").on("click", function(){
   $(".egg").addClass("none");
   $(".creature").removeClass("none");
   $("#bottomscreen-start").addClass("none");
-  $("#bottomscreen-gameplay").removeClass("none")
+  $("#bottomscreen-gameplay").removeClass("none");
   $("#playername").html(tamagotchiName);
   startBoredomTimer(); 
   startHungerTimer();
@@ -100,8 +101,9 @@ $(".submitname").on("click", function(){
     },10000);
 });
 
+//Play Buttons
 $("#play").on("click", function () {
-  if (boredomMeter >= 3) {
+  if (boredomMeter >= 3 && $("#resticon").hasClass("none") == true && $("#foodicon").hasClass("none") == true) {
     boredomMeter = boredomMeter - 3; 
     $('#boredom').html(boredomMeter);
     $("#playicon").removeClass("none");
@@ -110,14 +112,12 @@ $("#play").on("click", function () {
         clearInterval(counter);
         $("#playicon").addClass("none");
       }
-    },1500);
+    },1000);
   } else return;
 })
 
-//Consider if I click two buttons simultaneously, what happens to icons?
-
 $("#feed").on("click", function () {
-  if (hungerMeter >= 2){
+  if (hungerMeter >= 2 && $("#resticon").hasClass("none") == true && $("#playicon").hasClass("none") == true) {
     hungerMeter = hungerMeter - 2; 
     $('#hunger').html(hungerMeter);
     $("#foodicon").removeClass("none");
@@ -126,27 +126,28 @@ $("#feed").on("click", function () {
         clearInterval(counter);
         $("#foodicon").addClass("none");
       }
-    },1500);
+    },1000);
   } else return;
 })
 
+
+
 $("#rest").on("click", function () {
-  if (sleepinessMeter >= 4) {
+  if (sleepinessMeter >= 4 && $("#playicon").hasClass("none") == true && $("#foodicon").hasClass("none") == true) {
     sleepinessMeter = sleepinessMeter - 4; 
     $("#sleepiness").html(sleepinessMeter);
     $("#resticon").removeClass("none");
-    // //Doesn't work
     // $("#screen").addClass("nightscreen");
     let counter = setInterval(function() {
       if ($("#resticon").className !== "none") {
         clearInterval(counter);
         $("#resticon").addClass("none");
-        $("#screen").addClass("nightscreen");
+        // $("#screen").removeClass("nightscreen");
       }
-      },1500);
+      },1000);
     } else return;  
   }
 )
 
-//Current issue: getting countdowns to stop on other counters when 
-//one deathstate is reached
+//Outstanding issues: 
+// >Background doesn't change to night when I click

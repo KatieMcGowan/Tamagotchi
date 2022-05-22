@@ -5,7 +5,6 @@ body {
 .hover:hover {
   cursor: pointer;
   transform: scale(1.15);
-  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
 }
 .none {
   display: none;
@@ -41,7 +40,14 @@ h1 {
   padding: 15px;
 }
 .nightscreen {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 300px;
   background-color: midnightblue;
+  border: 2mm ridge rgba(8, 119, 123, 0.559);
+  border-radius: 10%;
+  padding: 15px;
 }
 #foodicon {
   height: 50px;
