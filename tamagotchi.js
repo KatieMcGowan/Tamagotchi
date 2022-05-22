@@ -130,24 +130,17 @@ $("#feed").on("click", function () {
   } else return;
 })
 
-
-
 $("#rest").on("click", function () {
   if (sleepinessMeter >= 4 && $("#playicon").hasClass("none") == true && $("#foodicon").hasClass("none") == true) {
     sleepinessMeter = sleepinessMeter - 4; 
     $("#sleepiness").html(sleepinessMeter);
     $("#resticon").removeClass("none");
-    // $("#screen").addClass("nightscreen");
     let counter = setInterval(function() {
       if ($("#resticon").className !== "none") {
         clearInterval(counter);
         $("#resticon").addClass("none");
-        // $("#screen").removeClass("nightscreen");
       }
       },1000);
     } else return;  
   }
 )
-
-//Outstanding issues: 
-// >Background doesn't change to night when I click
