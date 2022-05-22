@@ -14,54 +14,69 @@ const hatchTamagotchi = (value) => {
   tamagotchi.name = value;
 };
 
+const stopGame = () => {
+  if (boredomMeter >= 10 || hungerMeter >= 10 || sleepinessMeter >= 10) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const startBoredomTimer = () => {
   let counter = setInterval(function() {
-    boredomMeter++;
-    console.log(boredomMeter);
-    $('#boredom').html(boredomMeter);
-    if (boredomMeter >= 10) {
-      clearInterval(counter)
-      console.log(tamagotchi.name + " has died of boredom");
-      $("#topscreen-gameplay").addClass("none");
-      $("#bottomscreen-gameplay").addClass("none")
-      $(".creature").addClass("none");
-      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom.")
-      $("#deathtext").removeClass("none");
-      $(".deathicon").removeClass("none");
-    }
+    if (stopGame() == false) {
+      boredomMeter++;
+      stopGame();
+      $('#boredom').html(boredomMeter);
+    } else if (boredomMeter >= 10) {
+        clearInterval(counter)
+        $("#topscreen-gameplay").addClass("none");
+        $("#bottomscreen-gameplay").addClass("none")
+        $(".creature").addClass("none");
+        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom.")
+        $("#deathtext").removeClass("none");
+        $(".deathicon").removeClass("none");
+    } else {
+      clearInterval(counter);
+    }     
   },1500)
-}
+}  
 
 const startHungerTimer = () => {
   let counter = setInterval(function() {
-    hungerMeter++;
-    $('#hunger').html(hungerMeter);
-    if (hungerMeter >= 10) {
+    if (stopGame() == false) {
+      hungerMeter++;
+      stopGame();
+      $('#hunger').html(hungerMeter);
+    } else if (hungerMeter >= 10) {
       clearInterval(counter)
-      console.log(tamagotchi.name + " has died of hunger");
       $("#topscreen-gameplay").addClass("none");
       $("#bottomscreen-gameplay").addClass("none")
       $(".creature").addClass("none");
       $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from hunger.")
       $("#deathtext").removeClass("none");
       $(".deathicon").removeClass("none");
+    } else {
+      clearInterval(counter);
     }
   },2000)
 }
 
 const startSleepinessTimer = () => {
   let counter = setInterval(function() {
-    sleepinessMeter++;
-    $('#sleepiness').html(sleepinessMeter);
-    if (sleepinessMeter >= 10) {
-      clearInterval(counter)
-      console.log(tamagotchi.name + " has died of sleepiness");
-      $("#topscreen-gameplay").addClass("none");
-      $("#bottomscreen-gameplay").addClass("none")
-      $(".creature").addClass("none");
-      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from sleepiness.")
-      $("#deathtext").removeClass("none");
-      $(".deathicon").removeClass("none");
+    if (stopGame() == false) {
+      sleepinessMeter++;
+      $('#sleepiness').html(sleepinessMeter);
+    } else if (sleepinessMeter >= 10) {
+        clearInterval(counter)
+        $("#topscreen-gameplay").addClass("none");
+        $("#bottomscreen-gameplay").addClass("none")
+        $(".creature").addClass("none");
+        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from sleepiness.")
+        $("#deathtext").removeClass("none");
+        $(".deathicon").removeClass("none");
+    } else {
+      clearInterval(counter);
     }
   },3000)
 }
@@ -128,7 +143,10 @@ $("#rest").on("click", function () {
         $("#resticon").addClass("none");
         $("#screen").addClass("nightscreen");
       }
-    },1500);
-  } else return;  
+      },1500);
+    } else return;  
   }
 )
+
+//Current issue: getting countdowns to stop on other counters when 
+//one deathstate is reached
