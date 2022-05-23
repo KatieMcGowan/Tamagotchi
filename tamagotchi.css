@@ -83,6 +83,9 @@ h1 {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+#deathtext {
+  justify-content: center;
+}
 @keyframes bounce {
   from {
     margin-top: 10%;
@@ -173,6 +176,9 @@ p {
   border-radius: 50px;
   transition: 0.2s ease-in-out;
 }
+#play:active {
+  box-shadow: inset 0px 0px 5px #000000;
+}
 #feedcontainer {
   display: flex;
   flex-direction: column;
@@ -187,6 +193,9 @@ p {
   border-radius: 50px;
   transition: 0.2s ease-in-out;
 }
+#feed:active {
+  box-shadow: inset 0px 0px 5px #000000;
+}
 #restcontainer {
   display: flex;
   flex-direction: column;
@@ -199,4 +208,7 @@ p {
   border: 4mm ridge rgb(68, 0, 255);
   border-radius: 50px;
   transition: 0.2s ease-in-out;
+}
+#rest:active {
+  box-shadow: inset 0px 0px 5px #000000;
 }

@@ -33,9 +33,12 @@ const startBoredomTimer = () => {
         $("#topscreen-gameplay").addClass("none");
         $("#bottomscreen-gameplay").addClass("none")
         $(".creature").addClass("none");
-        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom.")
+        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom. Refresh to play again.")
         $("#deathtext").removeClass("none");
         $(".deathicon").removeClass("none");
+        $("#feed").removeClass("hover");
+        $("#rest").removeClass("hover");
+        $("#play").removeClass("hover");
     } else {
       clearInterval(counter);
     }     
@@ -53,9 +56,12 @@ const startHungerTimer = () => {
       $("#topscreen-gameplay").addClass("none");
       $("#bottomscreen-gameplay").addClass("none")
       $(".creature").addClass("none");
-      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from hunger.")
+      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from hunger. Refresh to play again.")
       $("#deathtext").removeClass("none");
       $(".deathicon").removeClass("none");
+      $("#feed").removeClass("hover");
+      $("#rest").removeClass("hover");
+      $("#play").removeClass("hover");
     } else {
       clearInterval(counter);
     }
@@ -72,9 +78,12 @@ const startSleepinessTimer = () => {
         $("#topscreen-gameplay").addClass("none");
         $("#bottomscreen-gameplay").addClass("none")
         $(".creature").addClass("none");
-        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from sleepiness.")
+        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from sleepiness. Refresh to play again.")
         $("#deathtext").removeClass("none");
         $(".deathicon").removeClass("none");
+        $("#feed").removeClass("hover");
+        $("#rest").removeClass("hover");
+        $("#play").removeClass("hover");
     } else {
       clearInterval(counter);
     }
@@ -92,6 +101,9 @@ $(".submitname").on("click", function(){
   $("#bottomscreen-start").addClass("none");
   $("#bottomscreen-gameplay").removeClass("none");
   $("#playername").html(tamagotchiName);
+  $("#play").addClass("hover");
+  $("#feed").addClass("hover");
+  $("#rest").addClass("hover");
   startBoredomTimer(); 
   startHungerTimer();
   startSleepinessTimer();
