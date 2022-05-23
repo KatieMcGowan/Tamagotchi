@@ -69,7 +69,7 @@ h1 {
   margin: auto;
   height: 65px;
   width: 65px;
-  animation-duration: 2s;
+  animation-duration: 8s;
   animation-name: slide;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -97,12 +97,12 @@ h1 {
   }
 }
 @keyframes slide {
-  from {
-    margin-left: 65%;
-  }
-  to {
-    margin-right: 65%;
-  }
+  0%    {margin-left: 100px}
+  50%   {margin-left: 150px}
+  51%   {transform: scaleX(-1);}
+  75%   {margin-left: 100px}
+  100%  {margin-left: 50px;
+        transform: scaleX(-1) }
 }
 @keyframes fade {
   0%   {opacity:1}
