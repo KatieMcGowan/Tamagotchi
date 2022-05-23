@@ -6,53 +6,46 @@ const tamagotchi = {
   fatigue: 0,
 }
 
+//Captures name value on start screen and updates tamagotchi object
 const hatchTamagotchi = (value) => {
   tamagotchi.name = value;
 };
 
-const stopGame = () => {
-  if (tamagotchi.boredom >= 10 || tamagotchi.hunger >= 10 || tamagotchi.fatigue >= 10) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-const boredomTimer = () => {
-  let counter = setInterval(function() {
-    if (stopGame() == false) {
-      tamagotchi.boredom++;
-      stopGame();
-      $('#boredom').html(tamagotchi.boredom);
-    } else if (tamagotchi.boredom >= 10) {
-        stopGame();
-        clearInterval(counter)
-        $("#topscreen-gameplay").addClass("none");
-        $("#bottomscreen-gameplay").addClass("none")
-        $(".creature").addClass("none");
-        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom. Refresh to play again.")
-        $("#deathtext").removeClass("none");
-        $(".deathicon").removeClass("none");
-        $("#feed").removeClass("hover");
-        $("#rest").removeClass("hover");
-        $("#play").removeClass("hover");
-    } else {
-      clearInterval(counter);
-    }     
-  },1500)
-}  
-
-const hungerTimer = () => {
-  let counter = setInterval(function() {
-    if (stopGame() == false) {
-      tamagotchi.hunger++;
-      stopGame();
-      $('#hunger').html(tamagotchi.hunger);
-    } else if (tamagotchi.hunger >= 10) {
-      stopGame();
-      clearInterval(counter)
+//Timers for age, boredom, hunger, and fatigue meters, with death conditions.
+const timer = () => {
+  let ageCounter = setInterval(function() {
+    tamagotchi.age++;
+    $("#age").html(tamagotchi.age);
+    },10000);
+  let boredomCounter = setInterval(function() {
+    tamagotchi.boredom++
+    $('#boredom').html(tamagotchi.boredom);
+    if (tamagotchi.boredom >= 10) {
+      clearInterval(boredomCounter);
+      clearInterval(hungerTimer);
+      clearInterval(fatigueCounter);
+      clearInterval(ageCounter);
       $("#topscreen-gameplay").addClass("none");
-      $("#bottomscreen-gameplay").addClass("none")
+      $("#bottomscreen-gameplay").addClass("none");
+      $(".creature").addClass("none");
+      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from boredom. Refresh to play again.")
+      $("#deathtext").removeClass("none");
+      $(".deathicon").removeClass("none");
+      $("#feed").removeClass("hover");
+      $("#rest").removeClass("hover");
+      $("#play").removeClass("hover");
+    }
+  },1500);
+  let hungerTimer = setInterval(function() {
+    tamagotchi.hunger++;
+    $('#hunger').html(tamagotchi.hunger);
+    if (tamagotchi.hunger >= 10) {
+      clearInterval(hungerTimer);
+      clearInterval(boredomCounter);
+      clearInterval(fatigueCounter);
+      clearInterval(ageCounter);
+      $("#topscreen-gameplay").addClass("none");
+      $("#bottomscreen-gameplay").addClass("none");
       $(".creature").addClass("none");
       $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from hunger. Refresh to play again.")
       $("#deathtext").removeClass("none");
@@ -60,41 +53,34 @@ const hungerTimer = () => {
       $("#feed").removeClass("hover");
       $("#rest").removeClass("hover");
       $("#play").removeClass("hover");
-    } else {
-      clearInterval(counter);
     }
-  },2000)
-}
-
-const fatigueTimer = () => {
-  let counter = setInterval(function() {
-    if (stopGame() == false) {
-      tamagotchi.fatigue++;
-      stopGame();
-      $('#sleepiness').html(tamagotchi.fatigue);
-    } else if (tamagotchi.fatigue >= 10) {
-        stopGame();
-        clearInterval(counter)
-        $("#topscreen-gameplay").addClass("none");
-        $("#bottomscreen-gameplay").addClass("none")
-        $(".creature").addClass("none");
-        $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from fatigue. Refresh to play again.")
-        $("#deathtext").removeClass("none");
-        $(".deathicon").removeClass("none");
-        $("#feed").removeClass("hover");
-        $("#rest").removeClass("hover");
-        $("#play").removeClass("hover");
-    } else {
-      clearInterval(counter);
-    }
+  }, 2000);
+  let fatigueCounter = setInterval(function() {
+    tamagotchi.fatigue++;
+    $('#sleepiness').html(tamagotchi.fatigue);
+    if (tamagotchi.fatigue >= 10) {
+      clearInterval(fatigueCounter);
+      clearInterval(boredomCounter);
+      clearInterval(hungerTimer);
+      clearInterval(ageCounter);
+      $("#topscreen-gameplay").addClass("none");
+      $("#bottomscreen-gameplay").addClass("none");
+      $(".creature").addClass("none");
+      $("#deathtext").html(tamagotchi.name + ", age: " + tamagotchi.age + ", died from fatigue. Refresh to play again.")
+      $("#deathtext").removeClass("none");
+      $(".deathicon").removeClass("none");
+      $("#feed").removeClass("hover");
+      $("#rest").removeClass("hover");
+      $("#play").removeClass("hover");
+    }  
   },3000)
-}
+}  
 
 //Submit Button
 $(".submitname").on("click", function(){
   let tamagotchiName = $("#name").val()
   hatchTamagotchi(tamagotchiName);
-  $("#topscreen-start").addClass("none")
+  $("#topscreen-start").addClass("none");
   $("#topscreen-gameplay").removeClass("none");
   $(".egg").addClass("none");
   $(".creature").removeClass("none");
@@ -104,13 +90,7 @@ $(".submitname").on("click", function(){
   $("#play").addClass("hover");
   $("#feed").addClass("hover");
   $("#rest").addClass("hover");
-  boredomTimer(); 
-  hungerTimer();
-  fatigueTimer();
-  setInterval(function() {
-    tamagotchi.age++;
-    $("#age").html(tamagotchi.age);
-    },10000);
+  timer();
 });
 
 //Play Buttons
@@ -126,9 +106,9 @@ $("#play").on("click", function () {
       }
     },1000);
   } else {
-  return;
-  }
-})
+    return;
+  };
+});
 
 $("#feed").on("click", function () {
   if (tamagotchi.hunger >= 2 && $("#resticon").hasClass("none") == true && $("#playicon").hasClass("none") == true) {
@@ -141,8 +121,10 @@ $("#feed").on("click", function () {
         $("#foodicon").addClass("none");
       }
     },1000);
-  } else return;
-})
+  } else {
+    return;
+  };
+});
 
 $("#rest").on("click", function () {
   if (tamagotchi.fatigue >= 4 && $("#playicon").hasClass("none") == true && $("#foodicon").hasClass("none") == true) {
@@ -154,11 +136,8 @@ $("#rest").on("click", function () {
         clearInterval(counter);
         $("#resticon").addClass("none");
       }
-      },1000);
-    } else return;  
-  }
-)
-
-
-//Last issue: Meters hitting 10 but taking 1.5-3 seconds to clear intervals
-//Clicking on a button when meter is 10 stops other intervals but keeps the clicked one going.
+    },1000);
+  } else {
+    return;  
+  };  
+});
